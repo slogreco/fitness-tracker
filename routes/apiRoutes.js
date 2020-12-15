@@ -17,7 +17,7 @@ router.post("/api/workouts", (req, res) => {
 
 // get all workouts
 router.get("/api/workouts", (req, res) => {
-    db.workout.findAll({})
+    db.workout.find({})
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -42,6 +42,8 @@ router.put("/api/workouts/:id", (req, res) => {
         console.log(err);
     });
 });
+
+
 
 
 
