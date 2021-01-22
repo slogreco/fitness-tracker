@@ -1,11 +1,9 @@
 const router = require("express").Router();
-const { isValidObjectID } = require("mongoose");
-const { workout } = require("../models");
 const db = require("../models");
 
 // create a new workout
 router.post("/api/workouts", (req, res) => {
-    db.workout.create(req.body)
+    db.Workout.create(req.body)
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -17,7 +15,7 @@ router.post("/api/workouts", (req, res) => {
 
 // get all workouts
 router.get("/api/workouts", (req, res) => {
-    db.workout.find({})
+    db.Workout.find({})
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -31,7 +29,7 @@ router.get("/api/workouts", (req, res) => {
 router.put("/api/workouts/:id", (req, res) => {
     const { body, params } = req;
 
-    db.workout.findByIdAndUpdate(params.id, {
+    db.Workout.findByIdAndUpdate(params.id, {
         $push: { exercises: body }
     })
     .then((dbWorkout) => {
@@ -43,7 +41,15 @@ router.put("/api/workouts/:id", (req, res) => {
     });
 });
 
-
+router.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+});
 
 
 
