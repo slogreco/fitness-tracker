@@ -8,7 +8,6 @@ router.post("/api/workouts", (req, res) => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            console.log(err);
             res.status(400).json(err);
         });
 });
@@ -21,7 +20,6 @@ router.get("/api/workouts", (req, res) => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            console.log(err);
             res.status(400).json(err);
         });
 });
@@ -38,7 +36,6 @@ router.put("/api/workouts/:id", (req, res) => {
         res.json(dbWorkout);
     })
     .catch((err) => {
-        console.log(err);
         res.status(400).json(err);
     });
 });
@@ -49,7 +46,6 @@ router.get("/api/workouts/range", (req, res) => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            console.log(err);
             res.status(400).json(err);
         });
 });
